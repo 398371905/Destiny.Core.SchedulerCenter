@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>0a03eb02-23b5-4147-8cf1-b319d806e1f9</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.AutoMapper\Destiny.Core.SchedulerCenter.AutoMapper.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Domain.Repository\Destiny.Core.SchedulerCenter.Domain.Repository.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.IdentityServer4Store\Destiny.Core.SchedulerCenter.IdentityServer4Store.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Identity\Destiny.Core.SchedulerCenter.Identity.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.MongoDB\Destiny.Core.SchedulerCenter.MongoDB.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.MultiTenancy\Destiny.Core.SchedulerCenter.MultiTenancy.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Shared\Destiny.Core.SchedulerCenter.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SuktCoreDB.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SuktCoreMongoDb.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SuktCoreRedis.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>
