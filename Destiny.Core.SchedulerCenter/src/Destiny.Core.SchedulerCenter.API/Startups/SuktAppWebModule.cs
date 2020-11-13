@@ -43,11 +43,13 @@ namespace Destiny.Core.SchedulerCenter.API.Startups
                 x.SuppressAsyncSuffixInActionNames = false;
                 x.Filters.Add<PermissionAuthorizationFilter>();
                 x.Filters.Add<AuditLogFilter>();
-            }).AddNewtonsoftJson(options =>
-            {
-                //options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-            });
+            })
+            //     .AddNewtonsoftJson(options =>
+            // {
+            //     //options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            //     options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            // })
+                ;
             var configuration = service.GetConfiguration();
             service.Configure<AppOptionSettings>(configuration.GetSection("SuktCore"));
             var settings = service.GetAppSettings();

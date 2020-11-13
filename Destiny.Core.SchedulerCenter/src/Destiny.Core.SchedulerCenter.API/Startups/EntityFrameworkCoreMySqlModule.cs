@@ -58,7 +58,7 @@ namespace Destiny.Core.SchedulerCenter.API.Startups
             {
                 var resolver = serviceProvider.GetRequiredService<ISuktConnectionStringResolver>();
                 var ss = resolver.Resolve();
-                options.UseMySql(mysqlconn, assembly => { assembly.MigrationsAssembly("Destiny.Core.SchedulerCenter.Domain.Models"); });
+                options.UseMySql(mysqlconn, ServerVersion.AutoDetect(mysqlconn),assembly => { assembly.MigrationsAssembly("Destiny.Core.SchedulerCenter.Domain.Models"); });
             });
             return services;
         }
