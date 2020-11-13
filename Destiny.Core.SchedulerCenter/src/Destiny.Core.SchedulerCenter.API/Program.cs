@@ -1,10 +1,12 @@
 using AspectCore.Extensions.Hosting;
+using Destiny.Core.SchedulerCenter.Commands;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using SuperSocket;
 using Destiny.Core.SchedulerCenter.SeriLog;
+using SuperSocket.ProtoBase;
 
 namespace Destiny.Core.SchedulerCenter.API
 {
@@ -28,7 +30,7 @@ namespace Destiny.Core.SchedulerCenter.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .UseSerilog()//×¢ÈëSerilogÈÕÖ¾ÖÐ¼ä¼þ//ÕâÀïÊÇÅäÖÃlogµÄ
+                    .UseSerilog()//×¢ï¿½ï¿½Serilogï¿½ï¿½Ö¾ï¿½Ð¼ï¿½ï¿½//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½logï¿½ï¿½
                     .ConfigureLogging((hostingContext, builder) =>
                     {
                         builder.ClearProviders();
@@ -38,6 +40,8 @@ namespace Destiny.Core.SchedulerCenter.API
                         builder.AddDebug();
                     });
                 })
-            .UseDynamicProxy();//Ê¹ÓÃ¶¯Ì¬´úÀíÐèÒªÔÚProgramÒýÓÃ´Ë·½·¨
+                .AsSuperSocketHostBuilder<StringPackageInfo, CommandLinePipelineFilter>()
+                .ConfigureCommands()
+            .UseDynamicProxy();//Ê¹ï¿½Ã¶ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Programï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½
     }
 }
