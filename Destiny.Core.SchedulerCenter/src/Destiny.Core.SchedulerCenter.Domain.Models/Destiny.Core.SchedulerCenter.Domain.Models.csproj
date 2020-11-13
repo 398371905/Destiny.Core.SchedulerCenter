@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.EntityFrameworkCore\Destiny.Core.SchedulerCenter.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.IdentityServerFour\Destiny.Core.SchedulerCenter.IdentityServerFour.csproj" />
-    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Identity\Destiny.Core.SchedulerCenter.Identity.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Shared\Destiny.Core.SchedulerCenter.Shared.csproj" />
   </ItemGroup>
 
