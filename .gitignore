@@ -382,3 +382,9 @@ src/Destiny.Core.Flow.API/DestinyCoreMongoDb.txt
 /src/Destiny.Core.Flow.AuthenticationCenter/DestinyCoreDb.txt
 /src/Destiny.Core.Flow.AuthenticationCenter/DestinyCoreMongoDb.txt
 /src/Destiny.Core.Flow.AuthenticationCenter/DestinyCoreRedis.txt
+/Destiny.Core.SchedulerCenter/src/Destiny.Core.SchedulerCenter.API/logs
+/Destiny.Core.SchedulerCenter/src/Destiny.Core.SchedulerCenter.API/logs
+/Destiny.Core.SchedulerCenter/src/Destiny.Core.SchedulerCenter.API/logs
+/Destiny.Core.SchedulerCenter/src/Destiny.Core.SchedulerCenter.API/SuktCoreDB.txt
+/Destiny.Core.SchedulerCenter/src/Destiny.Core.SchedulerCenter.API/SuktCoreRedis.txt
+/Destiny.Core.SchedulerCenter/src/Destiny.Core.SchedulerCenter.API/SuktCoreMongoDb.txt

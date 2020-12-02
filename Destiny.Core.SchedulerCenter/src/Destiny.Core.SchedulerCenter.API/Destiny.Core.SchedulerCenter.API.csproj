@@ -44,7 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Destiny.Core.SchedulerCenter.Commands\Destiny.Core.SchedulerCenter.Commands.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Aop\Destiny.Core.SchedulerCenter.Aop.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Application\Destiny.Core.SchedulerCenter.Application.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.AspNetCore\Destiny.Core.SchedulerCenter.AspNetCore.csproj" />
@@ -54,6 +53,7 @@
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.MultiTenancy\Destiny.Core.SchedulerCenter.MultiTenancy.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Redis\Destiny.Core.SchedulerCenter.Redis.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.SeriLog\Destiny.Core.SchedulerCenter.SeriLog.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.SuperSocket\Destiny.Core.SchedulerCenter.SuperSocket.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Swagger\Destiny.Core.SchedulerCenter.Swagger.csproj" />
   </ItemGroup>
 

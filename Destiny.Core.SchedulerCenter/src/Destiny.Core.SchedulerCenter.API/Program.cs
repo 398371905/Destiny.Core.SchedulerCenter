@@ -1,11 +1,11 @@
 using AspectCore.Extensions.Hosting;
-using Destiny.Core.SchedulerCenter.Commands;
+using Destiny.Core.SchedulerCenter.SeriLog;
+using Destiny.Core.SchedulerCenter.SuperSocket;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using SuperSocket;
-using Destiny.Core.SchedulerCenter.SeriLog;
 using SuperSocket.ProtoBase;
 
 namespace Destiny.Core.SchedulerCenter.API
@@ -41,7 +41,7 @@ namespace Destiny.Core.SchedulerCenter.API
                     });
                 })
                 .AsSuperSocketHostBuilder<StringPackageInfo, CommandLinePipelineFilter>()
-                .ConfigureCommands()
+            .AddSuperSocketHost()
             .UseDynamicProxy();//ʹ�ö�̬������Ҫ��Program���ô˷���
     }
 }

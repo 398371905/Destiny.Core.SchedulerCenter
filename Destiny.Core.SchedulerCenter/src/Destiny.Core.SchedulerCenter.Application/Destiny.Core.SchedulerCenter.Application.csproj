@@ -15,4 +15,5 @@
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.MongoDB\Destiny.Core.SchedulerCenter.MongoDB.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Shared\Destiny.Core.SchedulerCenter.Shared.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Dtos\Destiny.Core.SchedulerCenter.Dtos.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.SuperSocket\Destiny.Core.SchedulerCenter.SuperSocket.csproj" />
   </ItemGroup></Project>

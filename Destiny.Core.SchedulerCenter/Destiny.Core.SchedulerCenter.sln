@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Destiny.Core.SchedulerCente
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Destiny.Core.SchedulerCenter.CodeGenerator", "src\Destiny.Core.SchedulerCenter.CodeGenerator\Destiny.Core.SchedulerCenter.CodeGenerator.csproj", "{C819428F-7B36-463D-BCA1-367062593EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Destiny.Core.SchedulerCenter.Commands", "Destiny.Core.SchedulerCenter.Commands\Destiny.Core.SchedulerCenter.Commands.csproj", "{E49C0A6E-73AF-4A2C-83DF-4B3B9B755EA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Destiny.Core.SchedulerCenter.SuperSocket", "src\Destiny.Core.SchedulerCenter.SuperSocket\Destiny.Core.SchedulerCenter.SuperSocket.csproj", "{540FED09-BAD9-4E92-AAE8-4738C1B21CAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,10 +159,10 @@ Global
 		{C819428F-7B36-463D-BCA1-367062593EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C819428F-7B36-463D-BCA1-367062593EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C819428F-7B36-463D-BCA1-367062593EC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E49C0A6E-73AF-4A2C-83DF-4B3B9B755EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E49C0A6E-73AF-4A2C-83DF-4B3B9B755EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E49C0A6E-73AF-4A2C-83DF-4B3B9B755EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E49C0A6E-73AF-4A2C-83DF-4B3B9B755EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540FED09-BAD9-4E92-AAE8-4738C1B21CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540FED09-BAD9-4E92-AAE8-4738C1B21CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540FED09-BAD9-4E92-AAE8-4738C1B21CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540FED09-BAD9-4E92-AAE8-4738C1B21CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,7 +192,7 @@ Global
 		{23DCF52F-C79A-46F1-B96C-AEC4B8E23A8D} = {B061BE61-AEF2-4F5E-B900-280FBB10BFC3}
 		{B68AE830-ACD5-4335-A507-4923F0847294} = {B061BE61-AEF2-4F5E-B900-280FBB10BFC3}
 		{C819428F-7B36-463D-BCA1-367062593EC5} = {4A750E7C-B356-4C74-9BFC-F29D0D475E19}
-		{E49C0A6E-73AF-4A2C-83DF-4B3B9B755EA4} = {4A750E7C-B356-4C74-9BFC-F29D0D475E19}
+		{540FED09-BAD9-4E92-AAE8-4738C1B21CAA} = {B061BE61-AEF2-4F5E-B900-280FBB10BFC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05B139D9-1492-4454-AF04-522949DE00D3}
