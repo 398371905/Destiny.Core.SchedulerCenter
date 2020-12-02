@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp5.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>cceb6c5c-9aca-466d-9fe6-a019e910f92b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
@@ -51,6 +51,7 @@
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Consul\Destiny.Core.SchedulerCenter.Consul.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Dtos\Destiny.Core.SchedulerCenter.Dtos.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.MultiTenancy\Destiny.Core.SchedulerCenter.MultiTenancy.csproj" />
+    <ProjectReference Include="..\Destiny.Core.SchedulerCenter.NodeApplication\Destiny.Core.SchedulerCenter.NodeApplication.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Redis\Destiny.Core.SchedulerCenter.Redis.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.SeriLog\Destiny.Core.SchedulerCenter.SeriLog.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.SuperSocket\Destiny.Core.SchedulerCenter.SuperSocket.csproj" />

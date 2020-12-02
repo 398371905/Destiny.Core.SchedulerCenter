@@ -1,15 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Destiny.Core.SchedulerCenter.Application;
+﻿using Destiny.Core.SchedulerCenter.Application;
 using Destiny.Core.SchedulerCenter.AspNetCore.ApiBase;
 using Destiny.Core.SchedulerCenter.Dtos.DataDictionaryDto;
+using Destiny.Core.SchedulerCenter.NodeApplication.MessageDto;
 using Destiny.Core.SchedulerCenter.Shared.AjaxResult;
 using Destiny.Core.SchedulerCenter.Shared.Audit;
 using Destiny.Core.SchedulerCenter.Shared.Entity;
 using Destiny.Core.SchedulerCenter.Shared.Extensions;
 using Destiny.Core.SchedulerCenter.Shared.OperationResult;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using SuperSocket;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Destiny.Core.SchedulerCenter.API.Controllers.DataDictionary
@@ -19,11 +24,12 @@ namespace Destiny.Core.SchedulerCenter.API.Controllers.DataDictionary
     {
         private readonly IDictionaryContract _dictionary = null;
         private readonly ILogger<DataDictionaryController> _logger = null;
-
-        public DataDictionaryController(IDictionaryContract dictionary, ILogger<DataDictionaryController> logger)
+        private readonly IServerInfo _serverInfo;
+        public DataDictionaryController(/*IDictionaryContract dictionary,*/ ILogger<DataDictionaryController> logger, IServerInfo serverInfo)
         {
-            _dictionary = dictionary;
+            //_dictionary = dictionary;
             _logger = logger;
+            _serverInfo = serverInfo;
         }
 
         /// <summary>
@@ -75,6 +81,52 @@ namespace Destiny.Core.SchedulerCenter.API.Controllers.DataDictionary
         public async Task<AjaxResult> DeleteAsyc(Guid? id)
         {
             return (await _dictionary.DeleteAsync(id.Value)).ToAjaxResult();
+        }
+        /// <summary>
+        /// Socket服务器发送消息测试
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Description("Socket服务器发送消息测试")]
+        public async Task<string> Socket([FromBody] SocketMsgDto input)
+        {
+            await Task.CompletedTask;
+            //var sessionContainer = _serviceProvider.GetServices<IMiddleware>()
+            //    .OfType<ISessionContainer>()
+            //    .FirstOrDefault();
+            var parmeters = new List<PerformParameter>();
+            //根据Id获取客户端主机
+            var sessionContainer = _serverInfo.GetSessionContainer()?.GetSessionByID(input.SessionId);
+            if (sessionContainer != null)
+            {
+                var parmeter1 = new PerformParameter
+                {
+                    FileName = "dotnet",
+                    Arguments = "shell\\Test\\ConsoleApp1.dll",
+
+                    TaskInstanceId = Guid.NewGuid()
+                };
+                parmeters.Add(parmeter1);
+                //var parmeter2 = new PerformParameter
+                //{
+                //    FileName = "dotnet",
+                //    Arguments = "shell\\Test\\ConsoleApp1.dll",
+                //    TaskType = TaskType.DOTNET,
+                //    TaskInstanceId = Guid.NewGuid()
+                //};
+                //parmeters.Add(parmeter2);
+                var msg = JsonConvert.SerializeObject(parmeters);
+                //像客户端发送消息
+                await sessionContainer.SendAsync(Encoding.UTF8.GetBytes($"ReceiveMsg {msg}\r\n"));
+
+                Console.WriteLine($"像客户端发送消息{input.Msg}成功");
+            }
+            else
+            {
+                return "消息发送失败";
+            }
+            return "消息发送成功";
         }
     }
 }

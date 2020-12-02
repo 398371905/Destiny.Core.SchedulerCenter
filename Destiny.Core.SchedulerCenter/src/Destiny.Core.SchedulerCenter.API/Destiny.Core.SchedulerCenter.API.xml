@@ -32,6 +32,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Destiny.Core.SchedulerCenter.API.Controllers.DataDictionary.DataDictionaryController.Socket(Destiny.Core.SchedulerCenter.NodeApplication.MessageDto.SocketMsgDto)">
+            <summary>
+            Socket服务器发送消息测试
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:Destiny.Core.SchedulerCenter.API.Controllers.HealthController.Get">
             <summary>
             健康监测

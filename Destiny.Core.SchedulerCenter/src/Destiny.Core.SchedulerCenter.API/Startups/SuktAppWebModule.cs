@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Destiny.Core.SchedulerCenter.Aop;
+﻿using Destiny.Core.SchedulerCenter.Aop;
 using Destiny.Core.SchedulerCenter.AspNetCore.Filters;
 using Destiny.Core.SchedulerCenter.AutoMapper;
 using Destiny.Core.SchedulerCenter.Domain.Models;
-using Destiny.Core.SchedulerCenter.Redis;
 using Destiny.Core.SchedulerCenter.Shared.AppOption;
 using Destiny.Core.SchedulerCenter.Shared.Events;
 using Destiny.Core.SchedulerCenter.Shared.Extensions;
 using Destiny.Core.SchedulerCenter.Shared.Modules;
 using Destiny.Core.SchedulerCenter.Shared.SuktDependencyAppModule;
 using Destiny.Core.SchedulerCenter.Swagger;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
@@ -19,15 +18,15 @@ namespace Destiny.Core.SchedulerCenter.API.Startups
     [SuktDependsOn(
         typeof(AopModule),
         typeof(SuktAutoMapperModuleBase),
-        typeof(CSRedisModuleBase),
+        //typeof(CSRedisModuleBase),
         typeof(IdentityServerAuthModule),//如果是用户及角色等通用功能使用IdentityModule   作为微服务架构则使用IdentityServerAuthModule
                                          //typeof(ConsulModuleBase),
                                          //typeof(IdentityModule), 
         typeof(SwaggerModule),
         typeof(DependencyAppModule),
         typeof(EventBusAppModuleBase),
-        typeof(EntityFrameworkCoreMySqlModule),
-        typeof(MongoDBModule),
+        //typeof(EntityFrameworkCoreMySqlModule),
+        //typeof(MongoDBModule),
         typeof(MultiTenancyModule),
         typeof(MigrationModuleBase)
         )]

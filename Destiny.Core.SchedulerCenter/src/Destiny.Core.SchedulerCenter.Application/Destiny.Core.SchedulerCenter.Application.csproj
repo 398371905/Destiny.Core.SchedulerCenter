@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp5.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
   </ItemGroup>
 
-<ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Aop\Destiny.Core.SchedulerCenter.Aop.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Domain.Models\Destiny.Core.SchedulerCenter.Domain.Models.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Domain.Repository\Destiny.Core.SchedulerCenter.Domain.Repository.csproj" />
@@ -16,4 +16,5 @@
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Shared\Destiny.Core.SchedulerCenter.Shared.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.Dtos\Destiny.Core.SchedulerCenter.Dtos.csproj" />
     <ProjectReference Include="..\Destiny.Core.SchedulerCenter.SuperSocket\Destiny.Core.SchedulerCenter.SuperSocket.csproj" />
-  </ItemGroup></Project>
+  </ItemGroup>
+</Project>

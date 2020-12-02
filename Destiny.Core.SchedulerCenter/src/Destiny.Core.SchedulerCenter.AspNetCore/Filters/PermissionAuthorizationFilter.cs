@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Destiny.Core.SchedulerCenter.Shared.OperationResult;
+﻿using Destiny.Core.SchedulerCenter.Shared.OperationResult;
 using Destiny.Core.SchedulerCenter.Shared.Permission;
 using Destiny.Core.SchedulerCenter.Shared.ResultMessageConst;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -36,12 +35,12 @@ namespace Destiny.Core.SchedulerCenter.AspNetCore.Filters
             var result = new AjaxResult(ResultMessage.Unauthorized, Shared.Enums.AjaxResultType.Unauthorized);
             if (!action.EndpointMetadata.Any(x => x is AllowAnonymousAttribute))
             {
-                if (!(bool)_httpContextAccessor.HttpContext?.User.Identity.IsAuthenticated)
-                {
-                    context.HttpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    context.Result = new JsonResult(result);
-                    return;
-                }
+                //if (!(bool)_httpContextAccessor.HttpContext?.User.Identity.IsAuthenticated)
+                //{
+                //    context.HttpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                //    context.Result = new JsonResult(result);
+                //    return;
+                //}
                 //if (!await _authority.IsPermission(linkurl.ToLower()))
                 //{
                 //    ////????不包含的时候怎么返回出去？这个请求终止掉
