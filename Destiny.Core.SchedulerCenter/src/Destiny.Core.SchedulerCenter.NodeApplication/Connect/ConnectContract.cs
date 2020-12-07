@@ -26,9 +26,11 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
             Console.WriteLine("Client start.");
             _startProcessContract.Client = this.Client;
 
-            //接收消息
+            //接收消息事件
             Client.PackageHandler += ReceiveMessage;
-
+            //断开重连事件
+            Client.Closed += Reconnection;
+            #region 废弃代码
             //Client.Closed += async (s, p) =>
             //{
             //    while (!reconnection)
@@ -40,8 +42,7 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
             //    Client.Closed += Reconnection;
             //    Client.StartReceive();
             //};
-            Client.Closed += Reconnection;
-            #region 废弃代码
+
             //接收消息
             //Client.PackageHandler += async (s, p) =>
             //{
@@ -93,6 +94,8 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
         }
         async void Reconnection(object sender, EventArgs e)
         {
+            Client.PackageHandler -= ReceiveMessage;
+            Client.Closed -= Reconnection;
             while (!reconnection)
             {
                 Console.WriteLine("重新连接成功");
