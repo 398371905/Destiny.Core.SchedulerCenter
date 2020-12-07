@@ -20,28 +20,46 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
         }
 
         public IEasyClient<StringPackageInfo> Client { get; set; }
-
+        private bool reconnection = false;
         public async Task ConnectAsync()
         {
             Console.WriteLine("Client start.");
             _startProcessContract.Client = this.Client;
+
             //接收消息
-            Client.PackageHandler += async (s, p) =>
-            {
-                List<Task> tasks = new List<Task>();
-                var bogylist = p.Body.FromJson<List<PerformParameter>>();
-                foreach (var item in bogylist)
-                {
-                    tasks.Add(
-                        Task.Run(() =>
-                        {
-                            _startProcessContract.StartTaskFunc(item);
-                        }));
-                }
-                Task.WhenAll(tasks.ToArray());
-                Console.WriteLine($"--------------------{ p.Body}");
-                await Task.CompletedTask;
-            };
+            Client.PackageHandler += ReceiveMessage;
+
+            //Client.Closed += async (s, p) =>
+            //{
+            //    while (!reconnection)
+            //    {
+            //        reconnection = await Client.ConnectAsync(new IPEndPoint(IPAddress.Parse("10.1.10.172"), 4052));
+            //    }
+            //    Console.WriteLine("重新连接成功");
+            //    Client.PackageHandler += ReceiveMessage;
+            //    Client.Closed += Reconnection;
+            //    Client.StartReceive();
+            //};
+            Client.Closed += Reconnection;
+            #region 废弃代码
+            //接收消息
+            //Client.PackageHandler += async (s, p) =>
+            //{
+            //    List<Task> tasks = new List<Task>();
+            //    var bogylist = p.Body.FromJson<List<PerformParameter>>();
+            //    foreach (var item in bogylist)
+            //    {
+            //        tasks.Add(
+            //            Task.Run(() =>
+            //            {
+            //                _startProcessContract.StartTaskFunc(item);
+            //            }));
+            //    }
+            //    Task.WhenAll(tasks.ToArray());
+            //    Console.WriteLine($"--------------------{ p.Body}");
+            //    await Task.CompletedTask;
+            //};
+            #endregion
             //客户端连接
             var connected = await Client.ConnectAsync(new IPEndPoint(IPAddress.Parse("10.1.10.172"), 4052));
             if (!connected)
@@ -56,6 +74,33 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
             {
 
             }
+        }
+        async ValueTask ReceiveMessage(IEasyClient<StringPackageInfo> client, StringPackageInfo packageInfo)
+        {
+            List<Task> tasks = new List<Task>();
+            var bogylist = packageInfo.Body.FromJson<List<PerformParameter>>();
+            foreach (var item in bogylist)
+            {
+                tasks.Add(
+                    Task.Run(() =>
+                    {
+                        _startProcessContract.StartTaskFunc(item);
+                    }));
+            }
+            Task.WhenAll(tasks.ToArray());
+            Console.WriteLine($"--------------------{ packageInfo.Body}");
+            await Task.CompletedTask;
+        }
+        async void Reconnection(object sender, EventArgs e)
+        {
+            while (!reconnection)
+            {
+                Console.WriteLine("重新连接成功");
+                reconnection = await Client.ConnectAsync(new IPEndPoint(IPAddress.Parse("10.1.10.172"), 4052));
+                Client.PackageHandler += ReceiveMessage;
+                Client.Closed += Reconnection;
+                Client.StartReceive();
+            };
         }
     }
 }
