@@ -62,7 +62,7 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
             //};
             #endregion
             //客户端连接
-            var connected = await Client.ConnectAsync(new IPEndPoint(IPAddress.Parse("192.168.100.3"), 4052));
+            var connected = await Client.ConnectAsync(new IPEndPoint(IPAddress.Loopback, 4052));
             if (!connected)
             {
                 Console.WriteLine("Failed to connect the target server.");
@@ -76,7 +76,7 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
 
             }
         }
-       async ValueTask ReceiveMessage(IEasyClient<StringPackageInfo> client, StringPackageInfo packageInfo)
+        async ValueTask ReceiveMessage(IEasyClient<StringPackageInfo> client, StringPackageInfo packageInfo)
         {
             List<Task> tasks = new List<Task>();
             var bogylist = packageInfo.Body.FromJson<List<PerformParameter>>();
@@ -97,11 +97,12 @@ namespace Destiny.Core.SchedulerCenter.NodeApplication.Connect
             Client.Closed -= Reconnection;
             while (!reconnection)
             {
-                Console.WriteLine("重新连接成功");
-                reconnection = Task.Run( async () =>await Client.ConnectAsync(new IPEndPoint(IPAddress.Parse("192.168.100.3"), 4052))).Result;
+                Console.WriteLine("重新连接失败");
+                reconnection = Task.Run(async () => await Client.ConnectAsync(new IPEndPoint(IPAddress.Loopback, 4052))).Result;
             };
-            if(reconnection)
+            if (reconnection)
             {
+                Console.WriteLine("重新连接成功");
                 reconnection = false;
                 Client.PackageHandler += ReceiveMessage;
                 Client.Closed += Reconnection;
